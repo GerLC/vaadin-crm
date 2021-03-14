@@ -29,10 +29,21 @@ public class ContactService {
 
     }
 
+    /**
+     * @return all available Contact's objects.
+     */
     public List<Contact> findAll() {
         return contactRepository.findAll();
     }
 
+    /**
+     * Finds all Customer's that match given filter.
+     *
+     * @param stringFilter
+     *            filter that returned objects should match or null/empty string
+     *            if all objects should be returned.
+     * @return list a Customer objects
+     */
     public List<Contact> findAll(String stringFilter) {
         if (stringFilter == null || stringFilter.isEmpty()) {
             return contactRepository.findAll();
@@ -41,14 +52,30 @@ public class ContactService {
         }
     }
 
+    /**
+     * @return the amount of all contacts in the system
+     */
     public long count() {
         return contactRepository.count();
     }
 
+    /**
+     * Deletes a contacts from a system
+     *
+     * @param contact
+     *            the Contact to be deleted
+     */
     public void delete(Contact contact) {
         contactRepository.delete(contact);
     }
 
+    /**
+     * Persists or updates contacts in the system. Also assigns an identifier
+     * for new Contacts instances.
+     *
+     * @param contact
+     * the Contact to be saved
+     */
     public void save(Contact contact) {
         if (contact == null) {
             LOGGER.log(Level.SEVERE, "Contact is null. Are you sure you have connected your form to the application?");

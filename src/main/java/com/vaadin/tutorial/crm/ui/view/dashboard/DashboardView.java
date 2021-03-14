@@ -31,6 +31,7 @@ public class DashboardView extends VerticalLayout {
 
         addClassName("dashboard-view");
         setDefaultHorizontalComponentAlignment(Alignment.CENTER);
+        setJustifyContentMode(JustifyContentMode.CENTER);
 
 
     }

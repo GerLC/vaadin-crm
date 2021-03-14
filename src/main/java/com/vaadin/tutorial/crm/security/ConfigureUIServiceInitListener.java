@@ -7,6 +7,11 @@ import com.vaadin.flow.server.VaadinServiceInitListener;
 import com.vaadin.tutorial.crm.ui.view.login.LoginView;
 import org.springframework.stereotype.Component;
 
+/**
+ * Adds before enter listener to check access to views.
+ * Adds the Offline banner.
+ * 
+ */
 @Component
 public class ConfigureUIServiceInitListener implements VaadinServiceInitListener {
 
@@ -18,6 +23,12 @@ public class ConfigureUIServiceInitListener implements VaadinServiceInitListener
         });
     }
 
+	/**
+	 * Reroutes the user if she is not authorized to access the view. 
+	 *
+	 * @param event
+	 *            before navigation event with event details
+	 */
     private void authenticateNavigation(BeforeEnterEvent event) {
         if (!LoginView.class.equals(event.getNavigationTarget())
                 && !SecurityUtils.isUserLoggedIn()) {
